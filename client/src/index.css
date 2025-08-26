@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap');
-@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
 
 @tailwind base;
 @tailwind components;
@@ -108,7 +107,9 @@
   
   .map-container {
     height: 100%;
+    width: 100%;
     position: relative;
+    min-height: 400px;
   }
   
   .leaflet-container {

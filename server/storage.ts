@@ -76,7 +76,11 @@ export class MemStorage implements IStorage {
 
     sampleLocations.forEach(location => {
       const id = randomUUID();
-      const fullLocation: Location = { ...location, id };
+      const fullLocation: Location = { 
+        ...location, 
+        id,
+        description: location.description || null 
+      };
       this.locations.set(id, fullLocation);
     });
   }
@@ -108,7 +112,11 @@ export class MemStorage implements IStorage {
 
   async createLocation(insertLocation: InsertLocation): Promise<Location> {
     const id = randomUUID();
-    const location: Location = { ...insertLocation, id };
+    const location: Location = { 
+      ...insertLocation, 
+      id,
+      description: insertLocation.description || null 
+    };
     this.locations.set(id, location);
     return location;
   }
