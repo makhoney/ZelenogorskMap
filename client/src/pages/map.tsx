@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import NavigationHeader from "@/components/layout/NavigationHeader";
 import BottomNavigation from "@/components/layout/BottomNavigation";
-import LeafletMap from "@/components/map/LeafletMap";
+import SimpleMap from "@/components/map/SimpleMap";
 import MarkerDetailsPanel from "@/components/map/MarkerDetailsPanel";
 import FloatingControls from "@/components/layout/FloatingControls";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
@@ -44,7 +44,7 @@ export default function MapPage() {
       <NavigationHeader user={user} />
       
       <main className="flex-1 relative">
-        <LeafletMap
+        <SimpleMap
           locations={locations}
           onMarkerClick={handleMarkerClick}
           isLoading={isLoading}
