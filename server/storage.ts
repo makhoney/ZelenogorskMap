@@ -79,7 +79,8 @@ export class MemStorage implements IStorage {
       const fullLocation: Location = { 
         ...location, 
         id,
-        description: location.description || null 
+        description: location.description || null,
+        status: location.status || "active"
       };
       this.locations.set(id, fullLocation);
     });
@@ -115,7 +116,8 @@ export class MemStorage implements IStorage {
     const location: Location = { 
       ...insertLocation, 
       id,
-      description: insertLocation.description || null 
+      description: insertLocation.description || null,
+      status: insertLocation.status || "active"
     };
     this.locations.set(id, location);
     return location;

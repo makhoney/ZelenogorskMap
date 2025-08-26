@@ -29,8 +29,14 @@ export default function LeafletMap({ locations, onMarkerClick, isLoading }: Leaf
 
   // Initialize map
   useEffect(() => {
-    if (!mapRef.current || mapInstanceRef.current) return;
-
+    if (!mapRef.current) return;
+    
+    // Clean up existing map instance if it exists
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current.remove();
+      mapInstanceRef.current = null;
+    }
+    
     const map = L.map(mapRef.current, {
       center: ZELENOGORSK_CENTER,
       zoom: 14,
@@ -40,7 +46,7 @@ export default function LeafletMap({ locations, onMarkerClick, isLoading }: Leaf
       maxZoom: 18,
       zoomControl: false
     });
-
+    
     // Add tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
@@ -53,6 +59,11 @@ export default function LeafletMap({ locations, onMarkerClick, isLoading }: Leaf
     }).addTo(map);
 
     mapInstanceRef.current = map;
+
+    // Force initial size calculation
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
 
     // Handle center user location events
     const handleCenterUserLocation = (event: any) => {

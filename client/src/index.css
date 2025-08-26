@@ -110,11 +110,14 @@
     width: 100%;
     position: relative;
     min-height: 400px;
+    z-index: 1;
   }
   
   .leaflet-container {
     background: #f8fafc;
     font-family: var(--font-sans);
+    height: 100% !important;
+    width: 100% !important;
   }
   
   .floating-controls {
