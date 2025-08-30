@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@your-ui-lib/**/*.{js,ts,jsx,tsx}" // если используешь shadcn/ui
+  ],
   theme: {
     extend: {},
   },
   plugins: [],
-};
+}
